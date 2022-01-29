@@ -18,28 +18,16 @@
  */
 package cn.edu.tsinghua.tvstore.benchmark.store;
 
-public class Store implements IStore {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public abstract class Store implements IStore {
+
+    protected static final Logger logger = LoggerFactory.getLogger(Store.class);
 
     private final String directory;
 
-    public Store(String directory) {
+    protected Store(String directory) {
         this.directory = directory;
-    }
-
-    // TODO implement your store
-
-    @Override
-    public void append(long steamID, long time, long value) {
-
-    }
-
-    @Override
-    public double query(long streamID, long startTime, long endTime, int aggregateNum) {
-        return 0.0;
-    }
-
-    @Override
-    public void flush(long streamID) {
-
     }
 }

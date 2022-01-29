@@ -20,9 +20,13 @@ package cn.edu.tsinghua.tvstore.benchmark.store;
 
 public interface IStore {
 
-    void append(long steamID, long time, long value);
+    void prepare(long streamID);
+
+    void append(long streamID, long[] time, long[] value);
 
     double query(long streamID, long startTime, long endTime, int aggregateNum);
 
     void flush(long streamID);
+
+    void finish(long streamID);
 }
