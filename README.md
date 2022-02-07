@@ -1,7 +1,8 @@
 # TVStore-benchmark
 
-TVStore-benchmark is a tool for benchmarking various time series data compression solutions. 
-Currently, TVStore-benchmark can support TVStore and SummaryStore.
+TVStore-benchmark is a benchmarking suite, with workloads and datasets, for fair comparisons between various time series store solutions, which might or might not support lossy compression. Currently, TVStore-benchmark supports TVStore, SummaryStore, Apache IoTDB and RRDTool. It constitutes partial contribution of our work on TVStore. For details see our paper at FAST'22:
+
+* Yanzhe An, Yue Su, Yuqing Zhu, and Jianmin Wang. **"TVStore: Automatically Bounding Time Series Storage via Time-Varying Compression."** In 20th USENIX Conference on File and Storage Technologies (FAST 22). 2022. [[pdf](https://www.usenix.org/conference/fast22/technical-sessions)]  
 
 ## Prerequisites
 
@@ -53,6 +54,7 @@ Take TVStore for example:
      ./query_synthetic_data.sh
      ```
 
+<<<<<<< HEAD
    - To measure throughput on redd low frequency data:
 
      ```
@@ -64,3 +66,8 @@ Take TVStore for example:
      ```
      ./query_redd_low_data.sh
      ```
+=======
+    ```
+    java -cp cn.edu.tsinghua.tvstore.benchmark.query.QueryREDDLowData tvstore-benchmark-0.1.0-SNAPSHOT.jar
+    ```
+>>>>>>> a9a2c1747765bd5a1d146d4984886a1df2982a8a
