@@ -54,7 +54,6 @@ Take TVStore for example:
      ./query_synthetic_data.sh
      ```
 
-<<<<<<< HEAD
    - To measure throughput on redd low frequency data:
 
      ```
@@ -66,8 +65,3 @@ Take TVStore for example:
      ```
      ./query_redd_low_data.sh
      ```
-=======
-    ```
-    java -cp cn.edu.tsinghua.tvstore.benchmark.query.QueryREDDLowData tvstore-benchmark-0.1.0-SNAPSHOT.jar
-    ```
->>>>>>> a9a2c1747765bd5a1d146d4984886a1df2982a8a
