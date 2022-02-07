@@ -33,26 +33,34 @@ Take TVStore for example:
 
 3. Run TVStore-benchmark
 
-   To measure throughput on synthetic data, you can run the following command:
+   First, enter the binary directory.
 
     ```
-    java -jar tvstore-benchmark-0.1.0-SNAPSHOT.jar
+    cd bin
     ```
 
-   To execute query process on synthetic data, you can run the following command:
+   Then, run the corresponding command to meet your needs. 
 
-    ```
-    java -cp cn.edu.tsinghua.tvstore.benchmark.query.QuerySyntheticData tvstore-benchmark-0.1.0-SNAPSHOT.jar
-    ```
+   - To measure throughput on synthetic data:
 
-   To measure throughput on redd low frequency data, you can run the following command:
+     ```
+     ./ingest_synthetic_data.sh
+     ```
 
-    ```
-    java -cp cn.edu.tsinghua.tvstore.benchmark.throughput.IngestREDDLowData tvstore-benchmark-0.1.0-SNAPSHOT.jar
-    ```
+   - To execute query process on synthetic data:
 
-   To execute query process on redd low frequency data, you can run the following command:
+     ```
+     ./query_synthetic_data.sh
+     ```
 
-    ```
-    java -cp cn.edu.tsinghua.tvstore.benchmark.query.QueryREDDLowData tvstore-benchmark-0.1.0-SNAPSHOT.jar
-    ```
+   - To measure throughput on redd low frequency data:
+
+     ```
+     ./ingest_redd_low_data.sh
+     ```
+
+   - To execute query process on redd low frequency data:
+
+     ```
+     ./query_redd_low_data.sh
+     ```
