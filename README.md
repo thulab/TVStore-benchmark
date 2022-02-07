@@ -65,3 +65,9 @@ Take TVStore for example:
      ```
      ./query_redd_low_data.sh
      ```
+
+## How to benchmark your solution
+
+If you want to use TVStore-benchmark to benchmark your own time series store solution, you should complete 
+a new class that extends `cn.edu.tsinghua.tvstore.benchmark.store.Store` and implement five necessary 
+methods, including `prepare`, `append`, `query`, `flush` and `finish`.
