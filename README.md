@@ -1,6 +1,6 @@
 # TVStore-benchmark
 
-TVStore-benchmark is a benchmarking suite, with workloads and datasets, for fair comparisons between various time series store solutions, which might or might not support lossy compression. Currently, TVStore-benchmark supports TVStore, SummaryStore, Apache IoTDB and RRDTool. It constitutes partial contribution of our work on TVStore. For details please refer to our FAST'22 paper:
+TVStore-benchmark is a benchmarking suite, with workloads and datasets, for fair comparisons between various time series store solutions, which might or might not support lossy compression. Currently, TVStore-benchmark supports TVStore, SummaryStore, Apache IoTDB and RRDTool. It constitutes partial contribution of our work on [TVStore](https://github.com/thulab/TVStore). For details please refer to our FAST'22 paper:
 
 * Yanzhe An, Yue Su, Yuqing Zhu, and Jianmin Wang. **"TVStore: Automatically Bounding Time Series Storage via Time-Varying Compression."** In 20th USENIX Conference on File and Storage Technologies (FAST 22). 2022. [[pdf](https://www.usenix.org/conference/fast22/technical-sessions)]  
 
