@@ -23,6 +23,7 @@ import cn.edu.tsinghua.tvstore.benchmark.store.Store;
 import cn.edu.tsinghua.tvstore.benchmark.store.SummaryStore;
 import cn.edu.tsinghua.tvstore.benchmark.store.TVStore;
 import cn.edu.tsinghua.tvstore.benchmark.utils.DataReader;
+import com.samsung.sra.datastore.ingest.CountBasedWBMH;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -92,7 +93,7 @@ public class IngestREDDLowData {
                 semaphore.acquireUninterruptibly();
             }
             try {
-                store.prepare(streamID);
+                CountBasedWBMH wbmh = store.prepare(streamID);
                 DataReader reader = new DataReader(fileName);
                 List<String> data = reader.readData();
 
@@ -119,7 +120,7 @@ public class IngestREDDLowData {
                     }
                 }
                 if (semaphore != null) {
-                    store.finish(streamID);
+                    store.finish(streamID, wbmh);
                 }
             } finally {
                 if (semaphore != null) {

@@ -18,9 +18,11 @@
  */
 package cn.edu.tsinghua.tvstore.benchmark.store;
 
+import com.samsung.sra.datastore.ingest.CountBasedWBMH;
+
 public interface IStore {
 
-    void prepare(long streamID);
+    CountBasedWBMH prepare(long streamID);
 
     void append(long streamID, long[] time, long[] value);
 
@@ -28,5 +30,5 @@ public interface IStore {
 
     void flush(long streamID);
 
-    void finish(long streamID);
+    void finish(long streamID, CountBasedWBMH wbmh);
 }

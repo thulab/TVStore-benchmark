@@ -18,6 +18,7 @@
  */
 package cn.edu.tsinghua.tvstore.benchmark.store;
 
+import com.samsung.sra.datastore.ingest.CountBasedWBMH;
 import org.apache.iotdb.db.exception.StorageEngineException;
 import org.apache.iotdb.db.qp.physical.crud.BatchInsertPlan;
 import org.apache.iotdb.db.service.IoTDB;
@@ -33,11 +34,14 @@ public class TVStore extends Store {
 
     public TVStore(String directory) {
         super(directory);
+        this.tvstore = IoTDB.getInstance();
+        this.tvstore.active();
     }
 
     @Override
-    public void prepare(long streamID) {
+    public CountBasedWBMH prepare(long streamID) {
         // do nothing
+        return null;
     }
 
     @Override
@@ -108,7 +112,7 @@ public class TVStore extends Store {
     }
 
     @Override
-    public void finish(long streamID) {
+    public void finish(long streamID, CountBasedWBMH wbmh) {
         // do nothing
     }
 }

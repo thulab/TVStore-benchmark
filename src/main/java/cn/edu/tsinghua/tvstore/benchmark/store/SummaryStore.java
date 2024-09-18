@@ -18,15 +18,20 @@ import java.io.IOException;
 public class SummaryStore extends Store {
 
     com.samsung.sra.datastore.SummaryStore store;
-    CountBasedWBMH wbmh;
 
     public SummaryStore(String directory) {
         super(directory);
+        try {
+            this.store = new com.samsung.sra.datastore.SummaryStore(this.directory,
+                    new com.samsung.sra.datastore.SummaryStore.StoreOptions().setKeepReadIndexes(true));
+        } catch (BackingStoreException | IOException | ClassNotFoundException e) {
+            logger.error(e.getMessage());
+        }
     }
 
     @Override
-    public void prepare(long streamID) {
-        wbmh = new CountBasedWBMH(new RationalPowerWindowing(1, 1, 20, 1))
+    public CountBasedWBMH prepare(long streamID) {
+        CountBasedWBMH wbmh = new CountBasedWBMH(new RationalPowerWindowing(1, 1, 20, 1))
                 .setValuesAreLongs(true)
                 .setBufferSize(800_000_000)
                 .setWindowsPerMergeBatch(100_000)
@@ -42,6 +47,7 @@ public class SummaryStore extends Store {
         } catch (StreamException | BackingStoreException e) {
             logger.error(e.getMessage());
         }
+        return wbmh;
     }
 
     @Override
@@ -76,7 +82,7 @@ public class SummaryStore extends Store {
     }
 
     @Override
-    public void finish(long streamID) {
+    public void finish(long streamID, CountBasedWBMH wbmh) {
         try {
             wbmh.flushAndSetUnbuffered();
             store.unloadStream(streamID);

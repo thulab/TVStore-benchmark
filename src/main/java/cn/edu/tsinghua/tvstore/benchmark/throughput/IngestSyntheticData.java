@@ -24,6 +24,7 @@ import cn.edu.tsinghua.tvstore.benchmark.store.SummaryStore;
 import cn.edu.tsinghua.tvstore.benchmark.store.TVStore;
 import cn.edu.tsinghua.tvstore.benchmark.utils.ParetoDistribution;
 import cn.edu.tsinghua.tvstore.benchmark.utils.PoissonDistribution;
+import com.samsung.sra.datastore.ingest.CountBasedWBMH;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -86,7 +87,7 @@ public class IngestSyntheticData {
                 semaphore.acquireUninterruptibly();
             }
             try {
-                store.prepare(streamID);
+                CountBasedWBMH wbmh = store.prepare(streamID);
                 long maxLatency = Long.MIN_VALUE;
                 long minLatency = Long.MAX_VALUE;
                 double avgLatency = 0;
@@ -139,7 +140,7 @@ public class IngestSyntheticData {
                     }
                 }
                 if (semaphore != null) {
-                    store.finish(streamID);
+                    store.finish(streamID, wbmh);
                 }
             } catch (Exception e) {
                 throw new RuntimeException(e);

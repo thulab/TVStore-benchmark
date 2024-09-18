@@ -25,7 +25,7 @@ public abstract class Store implements IStore {
 
     protected static final Logger logger = LoggerFactory.getLogger(Store.class);
 
-    private final String directory;
+    protected final String directory;
 
     protected Store(String directory) {
         this.directory = directory;
