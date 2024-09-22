@@ -20,10 +20,14 @@ package cn.edu.tsinghua.tvstore.benchmark.store;
 
 import com.samsung.sra.datastore.ingest.CountBasedWBMH;
 import org.apache.iotdb.db.exception.StorageEngineException;
+import org.apache.iotdb.db.exception.metadata.MetadataException;
+import org.apache.iotdb.db.exception.path.PathException;
+import org.apache.iotdb.db.exception.storageGroup.StorageGroupException;
 import org.apache.iotdb.db.qp.physical.crud.BatchInsertPlan;
 import org.apache.iotdb.db.service.IoTDB;
 import org.apache.iotdb.tsfile.file.metadata.enums.TSDataType;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,7 +44,17 @@ public class TVStore extends Store {
 
     @Override
     public CountBasedWBMH prepare(long streamID) {
-        // do nothing
+        String storageGroupName = "root.group_" + streamID;
+        String deviceName = "d";
+        String sensorName = "s" + streamID;
+        String dateType = "INT64";
+        String encoding = "GORILLA";
+
+        try {
+            tvstore.register(storageGroupName, deviceName, sensorName, dateType, encoding);
+        } catch (StorageEngineException | MetadataException | PathException | StorageGroupException | IOException e) {
+            logger.error(e.getMessage());
+        }
         return null;
     }
 
